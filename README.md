@@ -7,6 +7,6 @@ cd travel-app
 //
 Replace your-username with your GitHub username.
 This downloads the repo to your computer.
- - 
+Or you can do it non-manually 
 Make Sure to have VsCode downlaoded on your computer - linked it to your GitHub - Type "Let-s-Travel" Then add it. 
  
