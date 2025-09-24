@@ -1,0 +1,2 @@
+
+mkdir -p frontend api-integration ui-ux .github/workflows
