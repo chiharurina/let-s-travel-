@@ -1,0 +1,42 @@
+{
+  "name": "lets-travel-ui",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Let’s Travel — React + Tailwind v4 + shadcn/ui starter",
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test --watchAll",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.470.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "sonner": "^1.5.0",
+    "tailwind-merge": "^2.5.3"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^4.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
