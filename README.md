@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # hello!
 To Clone the Repo on VsCode 
 - Locally/Manual 
