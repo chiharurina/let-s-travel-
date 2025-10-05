@@ -1,19 +1,9 @@
-import { Button } from "./components/ui/button";
-import HelloWorld from "./components/HelloWorld";
-
+// frontend/ui-ux/src/App.jsx
 export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-md rounded-2xl border p-6 shadow-sm">
-        <h1 className="text-3xl font-bold mb-2">Let’s Travel — Starter</h1>
-        <p className="text-muted-foreground mb-4">
-          <HelloWorld /> 👋
-        </p>
-        <div className="flex gap-3">
-          <Button>Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-        </div>
+    <main className="min-h-screen grid place-items-center bg-gray-50">
+      <div className="p-8 rounded-2xl shadow bg-white">
+        <h1 className="text-2xl font-semibold">Vite + React + Tailwind v4</h1>
       </div>
     </main>
   );
