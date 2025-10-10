@@ -78,3 +78,13 @@ export async function del(url, options = {}) {
         ...options,
     });
 }
+
+// Helper for external API calls that do not need credentials
+export async function externalApiFetch(url, options = {}) {
+    const { credentials, ...restOptions } = options;
+
+    return apiFetch(url, {
+        ...restOptions,
+        credentials: "omit",
+    });
+}
