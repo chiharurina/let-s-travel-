@@ -46,3 +46,35 @@ export async function apiFetch(url, options = {}) {
         );
     }
 }
+
+// Helper methods
+
+export async function get(url, options = {}) {
+    return apiFetch(url, {
+        method: "GET",
+        ...options,
+    });
+}
+
+export async function post(url, body, options = {}) {
+    return apiFetch(url, {
+        method: "POST",
+        body: JSON.stringify(body),
+        ...options,
+    });
+}
+
+export async function put(url, body, options = {}) {
+    return apiFetch(url, {
+        method: "PUT",
+        body: JSON.stringify(body),
+        ...options,
+    });
+}
+
+export async function del(url, options = {}) {
+    return apiFetch(url, {
+        method: "DELETE",
+        ...options,
+    });
+}
