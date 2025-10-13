@@ -39,19 +39,6 @@ Wait for approval and make sure all conversations are resolved.
 
 Once approved, merge it into main.
 
-⚙️ Admin Branch Protection Setup (already configured)
-
-For reference, the following rules are active on the main branch:
-
-✅ Require a pull request before merging
-
-✅ Require conversation resolution before merging
-
-✅ Require linear history
-
-🚫 No direct pushes to main
-
-🚫 No branch deletions or force pushes
 
 💡 Why We Do This
 
