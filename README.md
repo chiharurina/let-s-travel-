@@ -64,6 +64,7 @@ Keep a clean commit history
 Ensure code review before changes go live
 
 Protect our main branch from accidental changes
+
 -------------------------------------------------------------------------------------
 To Clone the Repo on VsCode 
 - Locally/Manual 
