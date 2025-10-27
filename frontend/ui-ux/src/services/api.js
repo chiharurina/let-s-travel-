@@ -8,15 +8,34 @@ export class ApiError extends Error {
     }
 }
 
+function isMockEnabled(options) {
+    return options && Object.prototype.hasOwnProperty.call(options, "mockResponse");
+}
+
+async function resolveMockResponse(mockResponse, mockDelay) {
+    if (mockDelay) {
+        await new Promise((resolve) => setTimeout(resolve, mockDelay));
+    }
+
+    return typeof mockResponse === "function" ? mockResponse() : mockResponse;
+}
+
 // General API Fetch Helper
 export async function apiFetch(url, options = {}) {
+    if (isMockEnabled(options)) {
+        const { mockResponse, mockDelay = 0 } = options;
+        return resolveMockResponse(mockResponse, mockDelay);
+    }
+
+    const { mockResponse, mockDelay, ...restOptions } = options;
+
     const config = {
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
-            ...options.headers,
+            ...restOptions.headers,
         },
-        ...options,
+        ...restOptions,
     };
 
     try {

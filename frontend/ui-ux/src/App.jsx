@@ -1,10 +1,11 @@
-// frontend/ui-ux/src/App.jsx
+import { RouterProvider } from "./lib/router";
+import router from "./app/routes";
+import { AuthProvider } from "./auth/AuthContext";
+
 export default function App() {
   return (
-    <main className="min-h-screen grid place-items-center bg-gray-50">
-      <div className="p-8 rounded-2xl shadow bg-white">
-        <h1 className="text-2xl font-semibold">Vite + React + Tailwind v4</h1>
-      </div>
-    </main>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }
