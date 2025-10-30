@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWeather } from "../hooks/useWeather.jsx";
 import { getWeatherIconUrl } from "../services/weatherService.js";
+import { Skeleton } from "../components/ui/skeleton.jsx";
 
 export default function WeatherDemo() {
     const [city, setCity] = useState("Pomona");
@@ -35,17 +36,25 @@ export default function WeatherDemo() {
                 </div>
             </form>
 
-            {loading && (
-                <div className="text-center py-8">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-white border-t-blue-500"></div>
-                    <p className="mt-2 text-gray-600">Loading weather...</p>
-                </div>
-            )}
-
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
                     <p className="font-bold">Error</p>
                     <p>{error}</p>
+                </div>
+            )}
+
+            {loading && (
+                <div className="text-center">
+                    <Skeleton className="h-9 w-48 mx-auto mb-4" />
+                    <Skeleton className="h-24 w-24 mx-auto rounded-full mb-4" />
+                    <Skeleton className="h-12 w-32 mx-auto mb-2" />
+                    <Skeleton className="h-6 w-40 mx-auto mb-4" />
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <Skeleton className="h-18 w-full rounded-lg" />
+                        <Skeleton className="h-18 w-full rounded-lg" />
+                    </div>
+                    <Skeleton className="h-18 w-full rounded-lg mt-4" />
                 </div>
             )}
 
