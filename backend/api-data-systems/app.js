@@ -1,20 +1,17 @@
+const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 
-const express = require('express');
 const app = express();
-const port = process.env.PORT || 8080;
-
-const trips = require('./routes/trips');
-const bookings = require('./routes/bookings');
-const weather = require('./routes/weather');
-
+app.use(cors());
 app.use(express.json());
 
-app.use('/trips', trips);
-app.use('/bookings', bookings);
-app.use('/api', weather);
+const tripsRouter = require('./routes/trips');
+const itineraryRouter = require('./routes/itinerary');
+const participantsRouter = require('./routes/tripParticipants');
+app.use('/api/trips', tripsRouter);
+app.use('/api/itinerary', itineraryRouter);
+app.use('/api/tripParticipants', participantsRouter);
 
-app.listen(port, (err) => {
-    if (err) console.log(err);
-    console.log('Listening on port', port);
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
