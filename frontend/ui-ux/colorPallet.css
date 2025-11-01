@@ -1,0 +1,311 @@
+/* ------------------------------ */
+/* MADE BY: BREANNA RAMOS 10/28/25*/
+/*   GLOBAL RESETS & BASE STYLES  */
+/* ------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #86B3BE;
+}
+
+.nunito {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* --------------------------- */
+/*     HEADER & NAVIGATION     */
+/* --------------------------- */
+header {
+    position: sticky;
+    top: 0;
+    background-color: #1A2133;
+    z-index: 1000;
+    color: white;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerName {
+    font-size: 30px;
+}
+
+.headerButton {
+    color: #CBF7ED;
+}
+
+/* Logo section (image + text) */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* space between logo and text */
+    text-decoration: none; /* removes underline */
+}
+
+.logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain; /* keeps image proportions */
+}
+
+.logo-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* --------------------------- */
+/*        DROPDOWN MENU        */
+/* --------------------------- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropName {
+    font-size: 15px;
+}
+
+/* Hamburger button */
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 28px;
+    padding: 0;
+}
+
+/* The three bars */
+.bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.dropbtn:hover .bar {
+    background-color: #86B3BE;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #161925;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #d3d3d3;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --------------------------- */
+/*         TYPOGRAPHY          */
+/* --------------------------- */
+h1 {
+    color: #161925;
+    font-size: 30px;
+}
+
+.h1 {
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+}
+
+.title {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+h2 {
+    color: #161925;
+    font-size: 22px;
+    margin-left: 5rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: #161925;
+    font-size: 20px;
+    margin-left: 8rem;
+    margin-bottom: 3rem;
+    margin-right: 3rem;
+}
+
+/* --------------------------- */
+/*    CARD LAYOUT & STYLES     */
+/* --------------------------- */
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* allows cards to move to the next line */
+    justify-content: center;
+    gap: 2rem; /* space between cards */
+    padding: 2rem;
+}
+
+.card1 {
+    flex: 1 1 400px; /* grow/shrink, min width of ~400px */
+    max-width: 100rem;
+    box-sizing: border-box;
+}
+
+.card2 {
+    flex: 1 1 400px;
+    background-color: #6391A6;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding-top: 2rem;
+    max-width: 100rem;
+    box-sizing: border-box;
+}
+
+.card3 {
+    flex: 1 1 400px;
+    background-color: #A9D5D6;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding-top: 2rem;
+    max-width: 100rem;
+    box-sizing: border-box;
+}
+/* --------------------------- */
+/*        FOOTER STYLES        */
+/* --------------------------- */
+.footer {
+  background-color: #1A2133;
+  color: #FFFFFF;
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;          /* make it span full width */
+  padding: 0 3rem;      /* adds nice side spacing */
+  box-sizing: border-box;
+}
+
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FFFFFF;
+}
+
+.footer-right {
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Make footer stack nicely on mobile */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-right {
+    text-align: center;
+  }
+}
+
+.btn {
+  background-color: #23395B;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Hover effect */
+.btn:hover {
+  background-color: #2e4a74;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* Optional: focus/active state */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Center buttons in the container */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
