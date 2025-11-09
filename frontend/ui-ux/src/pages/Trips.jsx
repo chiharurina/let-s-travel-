@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { get, ApiError } from "../services/api";
+import { getTrips } from "../services/trips";
 import { useAuth } from "../auth/AuthContext";
 
 function normalizeTrips(response) {
@@ -53,7 +53,7 @@ export default function TripsPage() {
       setError("");
 
       try {
-        const response = await get("/api/trips");
+        const response = await getTrips();
         if (ignore) {
           return;
         }
