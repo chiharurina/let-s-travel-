@@ -1,7 +1,9 @@
 import os
-from flask import Flask, jsonify, request # request gets JSON data from POST method, jsonify returns JSON responses, flask for routing
-from supabase import create_client, Client
-from dotenv import load_dotenv
+import logging                                  # For logging requests
+from flask      import Flask, jsonify, request  # request gets JSON data from POST method, jsonify returns JSON responses, flask for routing
+from supabase   import create_client, Client
+from dotenv     import load_dotenv
+from flask_cors import CORS                     # Cross Origin Resource Sharing to allow requests from different origins 
 
 # Load environment variables to protect url & key
 load_dotenv()
@@ -15,15 +17,22 @@ supabase: Client = create_client(url, key)
 
 # Initialize Flask
 app = Flask(__name__)
+CORS(app,
+     supports_credentials=True,                         # Allow cookie/auth credentials
+     origins=["http://localhost:5173"],                 # Frontend access
+     methods=["GET", "POST", "OPTIONS"],                # Methods
+     allow_headers=["Content-Type", "Authorization"]    # JSON and Auth headers
+)  # Enable CORS for all routes
 
-# -- All Routes for Authentication --
+
+# Authentication Routes
 
 # Register Route
 @app.route("/api/auth/register", methods=["POST"])
 def register():
     data        =   request.get_json()      # Get JSON data from request
-    email       =   data.get("email")       # Extract email from JSON
-    password    =   data.get("password")    # Extract password from JSON
+    email       =   data.get("email")       # Get email from JSON
+    password    =   data.get("password")    # Get password from JSON
     try:
         #Register using email and password (Using Supabase Authenticaton)
         user = supabase.auth.sign_up({"email": email, "password": password})
@@ -41,16 +50,16 @@ def register():
 @app.route("/api/auth/login", methods=["POST"])
 def login():
     data        =   request.get_json()      # Get JSON data from request
-    email       =   data.get("email")       # Extract email from JSON
-    password    =   data.get("password")    # Extract password from JSON
+    email       =   data.get("email")       # Get email from JSON
+    password    =   data.get("password")    # Get password from JSON
     try:
         #Login using email and password (Using Supabase Authentication)
         session = supabase.auth.sign_in_with_password({"email": email, "password": password})
         if not session.session:
             return jsonify({"error": "Invalid credentials"}), 401 # Return 401 Unauthorized on invalid credentials
 
-        # Returns the JSON response with access token (proves user is authenticated for the session) (Usually lasts 1-2 Hours)
-        # The returned access token can be used to authenticate future logins (Usually lasts for weeks or months)
+        # Returns response with access token (proves user is authenticated for the session) (Usually lasts 1-2 Hours)
+        # Refresh token used for future logins (Usually lasts for weeks or months)
         return jsonify({
             "message"       :  "Login successful",
             "access_token"  :  session.session.access_token,
@@ -85,6 +94,30 @@ def me():
     except Exception as e:
         return jsonify({"error": f"Failed to fetch user: {str(e)}"}), 400   # Return 400 Bad Request on error
 
+# Allow token refresh
+@app.route("/api/auth/refresh", methods=["POST"])
+def refresh():
+    data        =   request.get_json()          # Get JSON data from request
+    refresh_token = data.get("refresh_token")   # Extract refresh token from JSON
+    if not refresh_token:
+        return jsonify({"error": "Refresh token is missing"}), 400          # Return 400 Bad Request if token is missing
+    try:
+        session = supabase.auth.refresh_session(refresh_token)
+        return jsonify({
+            "message"       :  "Token refresh successful",
+            "access_token"  :  session.session.access_token,
+            "refresh_token" :  session.session.refresh_token
+        })
+    except Exception as e:
+        return jsonify({"error": f"Token refresh failed: {str(e)}"}), 400   # Return 400 Bad Request on error
+
+# Set up logging 
+@app.after_request
+def log_request(response):
+    if request.path.startswith("/api/auth/"):
+        logging.info(f"{request.method} {request.path} - Status: {response.status_code}")
+    return response
+
 # Run the Flask app
 if __name__ == "__main__": # Checks if the script is run directly (not imported as a module)
     # If file is run directly, start the Flask development server with debug mode enabled
@@ -97,4 +130,10 @@ Return dictionaries, they are key-value pairs, which map directly to JSON object
 JSON is the standard format for data exchange in web APIs.
 
 Use appropriate HTTP status codes for error handling (e.g., 400 for Bad Request, 401 for Unauthorized).
+    -200: Success
+    -400: Bad Request (invalid input)
+    -401: Unauthorized (missing or invalid token)
+    -403: Forbidden (valid token, but not allowed)
+
+Log auth events.
 """
