@@ -1,4 +1,4 @@
-// frontend/ui-ux/postcss.config.js
+// frontend/web-app/postcss.config.js
 // Tailwind v4 uses the official PostCSS plugin package.
 export default {
   plugins: {

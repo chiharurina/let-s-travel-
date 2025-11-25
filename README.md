@@ -3,6 +3,15 @@
 
 🔒 Git Workflow & Branch Rules
 
+## Project structure (cleaned)
+
+- `backend/node-server/`: Node/Express API server (moved from `backend/api-data-systems`).
+- `backend/python-service/`: Python microservice for auxiliary tasks.
+- `backend/scripts/`: Supabase utilities (moved from the backend root).
+- `backend/testing-devops/` & `backend/user-trip-logic/`: Team documentation and planning notes.
+- `frontend/web-app/`: Vite React frontend (renamed from `frontend/ui-ux`).
+  - `examples/api-integration/`: Lightweight fetch demo consolidated from the previous standalone folder.
+
 To keep our project organized and prevent merge conflicts, please follow this workflow:
 
 🧭 Branch Workflow
