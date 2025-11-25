@@ -1,7 +1,7 @@
 {
     "type": "module",
     "scripts": {
-        "start": "node backend/main.js"
+        "start": "node backend/scripts/main.js"
     },
     "dependencies": {
         "bcryptjs": "^3.0.2"

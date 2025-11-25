@@ -1,4 +1,4 @@
-/* frontend/ui-ux/src/index.css */
+/* frontend/web-app/src/index.css */
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));

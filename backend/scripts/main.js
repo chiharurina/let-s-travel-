@@ -1,4 +1,4 @@
-// backend/main.js
+// backend/scripts/main.js
 import { supabase } from './supabaseAdmin.js'
 import bcrypt from 'bcryptjs'
 
@@ -18,12 +18,12 @@ async function addUser(username, plainPassword) {
   const { data, error } = await supabase
     .from('userdata')
     .insert([{ username, password_hash }])
-    .select('id, username, created_at') 
+    .select('id, username, created_at')
   if (error) console.error('❌ Insert error:', error)
   else console.log('✅ Inserted:', data)
 }
 
-// Fetch users 
+// Fetch users
 async function fetchUsers() {
   const { data, error } = await supabase
     .from('userdata')
@@ -32,7 +32,7 @@ async function fetchUsers() {
   else console.log('✅ Users:', data)
 }
 
-// Simple login check 
+// Simple login check
 async function checkLogin(username, plainPassword) {
   const { data, error } = await supabase
     .from('userdata')
